@@ -80,7 +80,7 @@ Vector2D Strategy::getHomePosition(const rcsc::WorldModel &wm, int self_unum)
          || wm.gameMode().type() == GameMode::AfterGoal_ )
     {
         std::vector<Vector2D> KickOffPosition(12);
-        KickOffPosition[1] = Vector2D(-52,0);
+        KickOffPosition[1] = Vector2D(-52.5,0);
         KickOffPosition[2] = Vector2D(-30,-10);
         KickOffPosition[3] = Vector2D(-30,10);
         KickOffPosition[4] = Vector2D(-30,-20);

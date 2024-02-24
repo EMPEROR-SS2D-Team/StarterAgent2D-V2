@@ -56,28 +56,13 @@ using namespace rcsc;
 bool
 RoleGoalie::execute( PlayerAgent * agent )
 {
-    static const Rect2D our_penalty( Vector2D( -ServerParam::i().pitchHalfLength(),
-                                               -ServerParam::i().penaltyAreaHalfWidth() + 1.0 ),
-                                     Size2D( ServerParam::i().penaltyAreaLength() - 1.0,
-                                             ServerParam::i().penaltyAreaWidth() - 2.0 ) );
 
     //////////////////////////////////////////////////////////////
     // play_on play
 
     // catchable
-    if ( agent->world().time().cycle()
-         > agent->world().self().catchTime().cycle() + ServerParam::i().catchBanCycle()
-         && agent->world().ball().distFromSelf() < ServerParam::i().catchableArea() - 0.05
-         && our_penalty.contains( agent->world().ball().pos() ) )
-    {
-        dlog.addText( Logger::ROLE,
-                      __FILE__": catchable. ball dist=%.1f, my_catchable=%.1f",
-                      agent->world().ball().distFromSelf(),
-                      ServerParam::i().catchableArea() );
-        agent->doCatch();
-        agent->setNeckAction( new Neck_TurnToBall() );
-    }
-    else if ( agent->world().self().isKickable() )
+    
+    if ( agent->world().self().isKickable() )
     {
         doKick( agent );
     }

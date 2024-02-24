@@ -73,7 +73,7 @@ protected:
     void handleServerParam();
     virtual
     void handlePlayerParam();
-    virtual
+    virtual 
     void handlePlayerType();
 
 private:
